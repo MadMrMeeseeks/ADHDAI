@@ -1,0 +1,39 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered">
+                @{
+                    var startHour = 5;
+                    var endHour = 24;
+                    for (int hour = startHour; hour < endHour; hour++)
+                    {
+                        for (int min = 0; min < 60; min += 30)
+                        {
+                            <tr>
+                                <td>@($"{hour:00}:{min:00}")</td>
+                                <td><span class="event-text" data-time="@($"{hour:00}:{min:00}")"></span></td>
+                            </tr>
+                        }
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('/Home/GetCalendarData')
+                .then(response => response.json())
+                .then(data => {
+                    for (let time in data) {
+                        let span = document.querySelector(`span[data-time="${time}"]`);
+                        if (span) {
+                            span.textContent = data[time];
+                        }
+                    }
+                });
+        });
+    </script>
+}

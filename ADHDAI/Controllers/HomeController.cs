@@ -9,7 +9,7 @@ namespace ADHDAI.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Snapshot"); ;
         }
 
         public IActionResult Privacy()
