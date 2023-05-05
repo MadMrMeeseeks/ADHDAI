@@ -26,6 +26,8 @@
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             fetch('/Home/GetCalendarData')
+            credentials: 'include'
+        })
                 .then(response => response.json())
                 .then(data => {
                     for (let time in data) {
