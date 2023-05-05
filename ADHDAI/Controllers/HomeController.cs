@@ -40,7 +40,7 @@ namespace ADHDAI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetCalendarData()
+        public JsonResult GetCalendarData()
         {
             if (System.IO.File.Exists("calendarData.json"))
             {
