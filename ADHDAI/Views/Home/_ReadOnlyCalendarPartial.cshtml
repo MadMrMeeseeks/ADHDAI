@@ -28,12 +28,14 @@
                 .then(response => response.json())
                 .then(data => {
                     for (let time in data) {
-                        let span = document.querySelector(`span[data-time="${time}"]`);
-                        if (span) {
-                            span.textContent = data[time];
+                        let input = document.querySelector(`input[data-time="${time}"]`);
+                        if (input) {
+                            input.value = data[time];
+                            input.setAttribute('readonly', true);
                         }
                     }
                 });
         });
+
     </script>
 }
