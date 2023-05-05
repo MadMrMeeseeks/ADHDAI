@@ -19,4 +19,19 @@
     </div>
 </div>
 
-
+@section Scripts {
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('/Home/GetCalendarData')
+                .then(response => response.json())
+                .then(data => {
+                    for (let time in data) {
+                        let input = document.querySelector(`input[data-time="${time}"]`);
+                        if (input) {
+                            input.value = data[time];
+                        }
+                    }
+                });
+        });
+    </script>
+}

@@ -11,7 +11,7 @@
                         {
                             <tr>
                                 <td>@($"{hour:00}:{min:00}")</td>
-                                <td><span class="event-text" data-time="@($"{hour:00}:{min:00}")"></span></td>
+                                <td><input type="text" class="form-control" data-time="@($"{hour:00}:{min:00}")" readonly /></td>
                             </tr>
                         }
                     }
@@ -25,19 +25,17 @@
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             fetch('/Home/GetCalendarData')
-            credentials: 'include'
-        })
                 .then(response => response.json())
                 .then(data => {
                     for (let time in data) {
                         let input = document.querySelector(`input[data-time="${time}"]`);
                         if (input) {
                             input.value = data[time];
-                            input.setAttribute('readonly', true);
                         }
                     }
                 });
         });
-
     </script>
 }
+
+
