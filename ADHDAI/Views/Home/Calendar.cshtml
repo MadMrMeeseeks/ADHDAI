@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Calendar";
+}
+
+<h2>Calendar</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered">
+                @{
+                    var startHour = 5;
+                    var endHour = 24;
+                    for (int hour = startHour; hour < endHour; hour++)
+                    {
+                        for (int min = 0; min < 60; min += 30)
+                        {
+                            <tr>
+                                <td>@($"{hour:00}:{min:00}")</td>
+                                <td><input type="text" class="form-control" data-time="@($"{hour:00}:{min:00}")" /></td>
+                            </tr>
+                        }
+                    }
+                }
+            </table>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="saveEntries()">Save</button>
+</div>
+
+@section Scripts {
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('/Home/GetCalendarData')
+                .then(response => response.json())
+                .then(data => {
+                    for (let time in data) {
+                        let input = document.querySelector(`input[data-time="${time}"]`);
+                        if (input) {
+                            input.value = data[time];
+                        }
+                    }
+                });
+        });
+
+        function saveEntries() {
+            // Read the input values from the calendar and save them into an object
+            let calendarData = {};
+            document.querySelectorAll('input[data-time]').forEach(input => {
+                calendarData[input.dataset.time] = input.value;
+            });
+
+            // Save the calendar data into the JSON file
+            fetch('/Home/SaveCalendarData', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(calendarData)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Calendar data saved!');
+                    } else {
+                        alert('Error saving calendar data.');
+                    }
+                });
+        }
+    </script>
+}
+
