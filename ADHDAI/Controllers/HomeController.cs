@@ -2,6 +2,8 @@
 using ADHDAI.Models;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using OpenAI_API;
+
 
 namespace ADHDAI.Controllers
 {
@@ -32,32 +34,11 @@ namespace ADHDAI.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult SaveCalendarData([FromBody] Dictionary<string, string> calendarData)
+        public IActionResult BrainDump()
         {
-            System.IO.File.WriteAllText("calendarData.json", JsonConvert.SerializeObject(calendarData));
-            return Ok();
+            return View();
         }
 
-        [HttpGet]
-        public JsonResult GetCalendarData()
-        {
-            if (System.IO.File.Exists("calendarData.json"))
-            {
-                var content = System.IO.File.ReadAllText("calendarData.json");
-                var calendarData = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
-                return Json(calendarData);
-            }
-            else
-            {
-                return Json(new Dictionary<string, string>());
-            }
-        }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

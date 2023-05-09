@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "BrainDump";
+}
+
+<h2>Brain Dump</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <textarea id="brainDumpInput" class="form-control" rows="5"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-primary" onclick="parseAndAddToCalendar()">Add to Calendar</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function parseAndAddToCalendar() {
+            // Get the input value from the BrainDump textbox
+            let inputText = document.querySelector('#brainDumpInput').value;
+
+            // Call the OpenAI API to parse the input text
+            fetch('/Home/ParseEventData', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ input: inputText })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Add the parsed event data to the calendar
+                    for (let time in data) {
+                        let input = document.querySelector(`input[data-time="${time}"]`);
+                        if (input) {
+                            input.value = data[time];
+                        }
+                    }
+                });
+        }
+    </script>
+}
