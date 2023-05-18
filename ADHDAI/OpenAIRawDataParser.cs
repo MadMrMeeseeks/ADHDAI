@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-class OpenAIRawDataParser
+class OpenAI
 {
     public static string openAItestAPI = "";
 
@@ -24,7 +24,9 @@ class OpenAIRawDataParser
 
     }
 
-    static async Task<string> DataParser(string rawUserInput)
+
+
+    static public async Task<string> DataParser(string rawUserInput)
     {
 
         string openAIKey = openAItestAPI;

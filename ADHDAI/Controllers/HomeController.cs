@@ -3,6 +3,7 @@ using ADHDAI.Models;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using OpenAI_API;
+using Newtonsoft.Json.Linq;
 
 
 namespace ADHDAI.Controllers
@@ -38,6 +39,57 @@ namespace ADHDAI.Controllers
         {
             return View();
         }
+
+        public IActionResult BrainDumpConfirmation()
+        {
+            //    string jsonString = @"{
+            //    'Objectives': [
+            //        {
+            //            'Type of Entry': 'To-Do',
+            //            'Description': 'Pick up prescription',
+            //            'Time': 'NA'
+            //        },
+            //        {
+            //            'Type of Entry': 'Goal',
+            //            'Description': 'Quit eating sugar',
+            //            'Time': 'NA'
+            //        },
+            //        {
+            //            'Type of Entry': 'Project',
+            //            'Description': 'Remodel guest bathroom',
+            //            'Time': 'NA'
+            //        },
+            //        {
+            //            'Type of Entry': 'Calendar Event',
+            //            'Description': 'Meet Kate for dinner',
+            //            'Time': '18:00'
+            //        },
+            //        {
+            //            'Type of Entry': 'Calendar Event',
+            //            'Description': 'Appointment with Dr Beal',
+            //            'Time': '11:30'
+            //        }
+            //    ]
+            //}";
+
+            string parseEventData = ParseEventData();
+
+            var objectives = Objective.GetObjectives(jsonString);
+
+            return View(objectives);
+
+        }
+
+
+
+        [HttpPost]
+        public string ParseEventData([FromBody] BrainDumpRequest request)
+        {
+            return "{}";
+        }
+        
+        public record BrainDumpRequest(string input);
+
 
 
     }

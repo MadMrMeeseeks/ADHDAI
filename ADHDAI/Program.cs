@@ -1,7 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 //secrets
-OpenAIRawDataParser.openAItestAPI =  builder.Configuration["OpenAiTestApi"];
+OpenAI.openAItestAPI =  builder.Configuration["OpenAiTestApi"];
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
