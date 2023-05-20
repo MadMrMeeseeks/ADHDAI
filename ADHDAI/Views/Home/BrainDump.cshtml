@@ -1,25 +1,31 @@
-﻿@{
+﻿@using static ADHDAI.Controllers.HomeController;
+@model BrainDumpRequest
+
+@{
     ViewData["Title"] = "BrainDump";
 }
 
 <h2>Brain Dump</h2>
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <textarea id="brainDumpInput" class="form-control" rows="5"></textarea>
+@using (Html.BeginForm("BrainDumpConfirmation", "Home", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                @Html.TextAreaFor(m => m.input, rows: 5, columns: 100, null)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input type="submit" class="btn btn-primary" value="Submit" />
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <button type="button" class="btn btn-primary" onclick="parseAndAddToCalendar()">Add to Calendar</button>
-        </div>
-    </div>
-</div>
+}
 
-@section Scripts {
+@*@section Scripts {
     <script>
-        function parseAndAddToCalendar() {
+        function returnString() {
             // Get the input value from the BrainDump textbox
             let inputText = document.querySelector('#brainDumpInput').value;
 
@@ -43,4 +49,4 @@
                 });
         }
     </script>
-}
+}*@

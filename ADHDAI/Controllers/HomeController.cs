@@ -40,7 +40,8 @@ namespace ADHDAI.Controllers
             return View();
         }
 
-        public IActionResult BrainDumpConfirmation()
+        [HttpPost]
+        public async Task<IActionResult> BrainDumpConfirmation(BrainDumpRequest request)
         {
             //    string jsonString = @"{
             //    'Objectives': [
@@ -72,25 +73,29 @@ namespace ADHDAI.Controllers
             //    ]
             //}";
 
-            string parseEventData = ParseEventData();
+            string rawUserInput = request.input;
 
-            var objectives = Objective.GetObjectives(jsonString);
+            string rawUserInputToJson = await OpenAI.DataParser(rawUserInput);
 
-            return View(objectives);
+            List<Objective> userOutputList = Objective.GetObjectives(rawUserInputToJson);
+
+            return View(userOutputList);
+
+
 
         }
 
 
 
-        [HttpPost]
-        public string ParseEventData([FromBody] BrainDumpRequest request)
-        {
-            return "{}";
-        }
-        
+        //[HttpPost]
+        //public string ParseEventData([FromBody] BrainDumpRequest request)
+        //{
+        //    return "{}";
+        //}
+
         public record BrainDumpRequest(string input);
 
-
+        
 
     }
 }

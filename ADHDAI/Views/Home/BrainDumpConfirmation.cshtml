@@ -1,14 +1,15 @@
 ﻿@model List<Objective>
 
-<h1>Brain Dump Confirmation</h1>
+@{
+    ViewData["Title"] = "BrainDump";
+}
 
-<ul>
-    @foreach (var objective in Model)
-    {
-        <li>
-            <strong>Type of Entry:</strong> @objective.TypeOfEntry <br />
-            <strong>Description:</strong> @objective.Description <br />
-            <strong>Time:</strong> @objective.Time
-        </li>
-    }
-</ul>
+<h2>Wow!</h2>
+
+@foreach (var objective in Model)
+{
+    <h3>Type of Entry: @objective.TypeOfEntry</h3>
+    <h3>Description: @objective.Description</h3>
+    <h3>Time: @objective.Time</h3>
+}
+
