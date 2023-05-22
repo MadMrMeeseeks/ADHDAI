@@ -33,7 +33,7 @@ class OpenAI
 
         string url = "https://api.openai.com/v1/engines/text-davinci-003/completions";
 
-        string aiGuidance = File.ReadAllText(@"C:\src\OpenAITesting\OpenAITesting\Prompt.txt");
+        string aiGuidance = "Take unstructured user entries. Break the information down into the following categories: To-Do, Goal. Project and Calendar Event. To-Dos are one off tasks which may be recurring and can be due on any day for example: “Pick up prescription” would be a to-do. Goals are something the user wants to accomplish,for example “I am having trouble quitting sugar and need help” The goal would be to quit eating sugar. Projects are things the user wants to build or create, for example “I want to renovate my backyard” would be an example of a project. Finally, a Calendar Event is something that needs to be added to the user's calendar, such as dinner plans, meetings and other common calendar worthy events. For the TIME column, Calendar events should be formatted in a 24 time format (for example 6:00pm should be 18:00) and are required to have a time. The other events can be NA, TODAY, or and actual time depending on the case. Please convert the table to the corresponding JSON format ";
 
         string jsonExample = """
             | Type of Entry | Description | Time |
