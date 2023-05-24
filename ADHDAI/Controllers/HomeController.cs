@@ -40,7 +40,7 @@ namespace ADHDAI.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost] // (In this case***) Square brackets are attributes. Requires data be "posted". 
         public async Task<IActionResult> BrainDumpConfirmation(BrainDumpRequest request)
         {
             //    string jsonString = @"{
