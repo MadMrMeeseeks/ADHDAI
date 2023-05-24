@@ -29,7 +29,7 @@ class OpenAI
     static public async Task<string> DataParser(string rawUserInput)
     {
 
-        string openAIKey = openAItestAPI;
+        string openAIKey = "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";
         //string openAIKey = "";
 
         string url = "https://api.openai.com/v1/engines/text-davinci-003/completions";
