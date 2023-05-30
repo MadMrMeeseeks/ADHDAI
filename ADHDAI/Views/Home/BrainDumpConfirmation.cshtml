@@ -1,15 +1,27 @@
-﻿@model List<Objective>
-
+﻿@using static ADHDAI.Controllers.HomeController;
+@model ParsedBrainDump
 @{
     ViewData["Title"] = "BrainDump";
 }
 
 <h2>Objectives Found!</h2>
 
-@foreach (var objective in Model)
+@foreach (var objective in Model.Objectives)
 {
     <h3>Type of Entry: @objective.TypeOfEntry</h3>
     <h3>Description: @objective.Description</h3>
     <h3>Time: @objective.Time</h3>
 }
 
+@using (Html.BeginForm("BrainDumpConfirmed", "Home", FormMethod.Post))
+{
+    // This is just to continue passing the Objectives to the next page
+    @for (int i = 0; i < Model.Objectives.Count; i++)
+    {
+        @Html.HiddenFor(m => m.Objectives[i].TypeOfEntry);
+        @Html.HiddenFor(m => m.Objectives[i].Description);
+        @Html.HiddenFor(m => m.Objectives[i].Time);
+    }
+
+    <input type="submit" class="btn btn-primary" value="Submit" />
+}

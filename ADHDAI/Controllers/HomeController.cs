@@ -40,6 +40,15 @@ namespace ADHDAI.Controllers
             return View();
         }
 
+        [HttpPost] 
+        public async Task<IActionResult> BrainDumpConfirmed(ParsedBrainDump parsedBrainDump)
+        {
+            // 1. Save to the calendar json file
+            // 2. Tell user it worked
+
+            return View();
+        }
+
         [HttpPost] // (In this case***) Square brackets are attributes. Requires data be "posted". 
         public async Task<IActionResult> BrainDumpConfirmation(BrainDumpRequest request)
         {
@@ -79,10 +88,7 @@ namespace ADHDAI.Controllers
 
             List<Objective> userOutputList = Objective.GetObjectives(rawUserInputToJson);
 
-            return View(userOutputList);
-
-
-
+            return View(new ParsedBrainDump(userOutputList));
         }
 
 
@@ -94,8 +100,6 @@ namespace ADHDAI.Controllers
         //}
 
         public record BrainDumpRequest(string input);
-
-        
-
+        public record ParsedBrainDump(List<Objective> Objectives);
     }
 }
