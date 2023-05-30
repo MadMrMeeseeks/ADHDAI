@@ -1,3 +1,4 @@
+
 # See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
@@ -5,16 +6,12 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-# Declare your environment variable
-ENV OPENAI_API_KEY=
-
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["ADHDAI/ADHDAI.csproj", "ADHDAI/"]
-RUN dotnet restore "ADHDAI/ADHDAI.csproj"
+COPY ["ADHDAI.csproj", "./"]
+RUN dotnet restore "ADHDAI.csproj"
 COPY . .
-WORKDIR "/src/ADHDAI"
-RUN dotnet build "ADHDAI.csproj" -c Release -o /app/build
+RUN dotnet build "ADHDAI.csproj" -c Release -o /app/build  # Adjusted here
 
 FROM build AS publish
 RUN dotnet publish "ADHDAI.csproj" -c Release -o /app/publish /p:UseAppHost=false
