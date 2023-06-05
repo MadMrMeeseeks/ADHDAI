@@ -6,7 +6,25 @@
     <title>@ViewData["Title"] - ADHDAI</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/flatly.css" />
-    
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.css" />
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.min.css" />
+    <link rel="stylesheet" href="~/css/toastui-calendar.css" />
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .content {
+            flex: 1 0 auto;
+        }
+
+        footer {
+            flex-shrink: 0;
+        }
+    </style>
 
 </head>
 <body>
@@ -44,12 +62,7 @@
         </nav>
     </header>
 
-
-
-
-
-
-    <div class="container">
+    <div class="content">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -61,24 +74,13 @@
         </div>
     </footer>
 
-    
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-
-    <script>
-        $(function () {
-            $('#calendar').fullCalendar({
-                events: '/home/getevents'
-            })
-        });
-    </script>
+    <script src="~/js/toastui-calendar.ie11.min.js"></script>
+    
 
     @RenderSection("Scripts", required: false)
 </body>
 </html>
-
-
-

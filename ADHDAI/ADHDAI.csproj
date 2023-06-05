@@ -9,6 +9,33 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\fonts\icon.eot" />
+    <None Include="wwwroot\fonts\icon.svg" />
+    <None Include="wwwroot\fonts\icon.ttf" />
+    <None Include="wwwroot\fonts\icon.woff" />
+    <None Include="wwwroot\images\ic-arrow-line-left%402x.png" />
+    <None Include="wwwroot\images\ic-arrow-line-left%403x.png" />
+    <None Include="wwwroot\images\ic-arrow-line-left.png" />
+    <None Include="wwwroot\images\ic-arrow-line-right%402x.png" />
+    <None Include="wwwroot\images\ic-arrow-line-right%403x.png" />
+    <None Include="wwwroot\images\ic-arrow-line-right.png" />
+    <None Include="wwwroot\images\ic-traveltime-w.png" />
+    <None Include="wwwroot\images\ic-view-day%402x.png" />
+    <None Include="wwwroot\images\ic-view-day%403x.png" />
+    <None Include="wwwroot\images\ic-view-day.png" />
+    <None Include="wwwroot\images\ic-view-month%402x.png" />
+    <None Include="wwwroot\images\ic-view-month%403x.png" />
+    <None Include="wwwroot\images\ic-view-month.png" />
+    <None Include="wwwroot\images\ic-view-week%402x.png" />
+    <None Include="wwwroot\images\ic-view-week%403x.png" />
+    <None Include="wwwroot\images\ic-view-week.png" />
+    <None Include="wwwroot\images\icon.png" />
+    <None Include="wwwroot\images\img-bi%402x.png" />
+    <None Include="wwwroot\images\img-bi%403x.png" />
+    <None Include="wwwroot\images\img-bi.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="OpenAI" Version="1.7.2" />
