@@ -12,17 +12,7 @@ namespace ADHDAI.Controllers
     {
         public IActionResult Index()
         {
-            return RedirectToAction("Snapshot"); ;
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public IActionResult Snapshot()
-        {
-            return View();
+            return View(); ;
         }
 
         public IActionResult Todos()
