@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
 }
+@model List<string>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -117,6 +118,33 @@
         </article>
     </div>
 
+    <script type="text/javascript">
+        let ourEvents = [
+        @foreach (var title in Model)
+        {
+            @:{
+            @:id: '1',
+            @:calendarId: 'cal1',
+            @:title: '@title',
+            @:body: 'TOAST UI Calendar',
+            @:start: '2023-06-07T10:00:00',
+            @:end: '2023-06-07T11:00:00',
+            @:location: 'Meeting Room A',
+            @:attendees: ['A', 'B', 'C'],
+            @:category: 'time',
+            @:state: 'Free',
+            @:isReadOnly: true,
+            @:color: '#fff',
+            @:backgroundColor: '#ccc',
+            @:customStyle:
+            @:{
+            @:fontStyle: 'italic',
+            @:fontSize: '15px',
+            @:   },
+            @: },
+        }
+        ];
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chance/1.1.8/chance.min.js"></script>
     <script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.js"></script>

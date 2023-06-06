@@ -31,7 +31,10 @@
   // functions to handle calendar behaviors
   function reloadEvents() {
     // Clear the calendar but do not generate or create new events
-    cal.clear();
+      cal.clear();
+
+      // Use ourEvents generated in Calendar.cshtml
+      cal.createEvents(ourEvents);
   }
 
   function getReadableViewName(viewType) {
@@ -262,6 +265,11 @@
       },
     },
   });
+
+    cal.on("beforeCreateEvent", (eventObj) => {
+        debugger;
+        // Somehow save it? Post to URL?
+    });
 
   // Init
   bindInstanceEvents();

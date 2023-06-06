@@ -22,7 +22,7 @@ namespace ADHDAI.Controllers
 
         public IActionResult Calendar()
         {
-            return View();
+            return View(new List<string> { "Event1", "Event Two", "Third Event" });
         }
 
         public IActionResult BrainDump()
